@@ -1,0 +1,1 @@
+let () =  Lexertest.run_test ()

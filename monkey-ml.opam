@@ -1,0 +1,22 @@
+opam-version: "2.0"
+version: "~dev"
+synopsis: ""
+maintainer: "Kazushi Kawamura <wakaka2277@gmail.com>"
+authors: "Kazushi Kawamura <wakaka2277@gmail.com>"
+license: ""
+homepage: ""
+bug-reports: ""
+depends: [
+  "specify-dependencies-here" {>= "optional-version"}
+]
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+dev-repo: "git+https://"
+url {
+  src:
+    "file:///Users/kazushi/Developer/src/github.com/kawamurakazushi/monkey-ml"
+}
+y
