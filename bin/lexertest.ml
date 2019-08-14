@@ -32,6 +32,18 @@ let test_advance =
   }
 
   let result = add(five, ten);
+
+  !-/*5;
+  5 < 10 > 5;
+
+  if (5 < 10) {
+    return true;
+  } else {
+    return false;
+  }
+
+  10 == 10;
+  10 != 9;
   " in
   let lexer = Lexer.create input; in
   [Token.Let;
@@ -69,6 +81,43 @@ let test_advance =
    Token.Ident "ten";
    Token.RParen;
    Token.Semicolon;
+   Token.Bang;
+   Token.Minus;
+   Token.Slash;
+   Token.Asterisk;
+   Token.Int 5;
+   Token.Semicolon;
+   Token.Int 5;
+   Token.Lt;
+   Token.Int 10;
+   Token.Gt;
+   Token.Int 5;
+   Token.Semicolon;
+   Token.If;
+   Token.LParen;
+   Token.Int 5;
+   Token.Lt;
+   Token.Int 10;
+   Token.RParen;
+   Token.LBrace;
+   Token.Return;
+   Token.True;
+   Token.Semicolon;
+   Token.RBrace;
+   Token.Else;
+   Token.LBrace;
+   Token.Return;
+   Token.False;
+   Token.Semicolon;
+   Token.RBrace;
+   Token.Int 10;
+   Token.Eq;
+   Token.Int 10;
+   Token.Semicolon;
+   Token.Int 10;
+   Token.NotEq;
+   Token.Int 9;
+   Token.Semicolon;
    Token.Eof;
   ]
   |> List.fold_left
@@ -78,7 +127,6 @@ let test_advance =
     (lexer , "Testing test_advacne...\n")
   |> snd
   |> print_endline
-
 
 let test_is_letter =
   if Lexer.is_letter 'a' then

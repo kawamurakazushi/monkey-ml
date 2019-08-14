@@ -64,13 +64,32 @@ let rec skip_whitespace l = match l.ch with
     else  l
   | None -> l
 
-
 let next l =
   let clean_lexer = skip_whitespace l in
   let next_lexer = read clean_lexer in
   match clean_lexer.ch with
-  | Some '=' -> (next_lexer, Token.Assign)
+  | Some '=' ->
+    (match next_lexer.ch with
+     | Some peekCh ->
+       if peekCh = '=' then
+         (read next_lexer, Token.Eq)
+       else
+         (next_lexer, Token.Assign)
+     | None -> (next_lexer, Token.Assign))
   | Some '+' -> (next_lexer, Token.Plus)
+  | Some '-' -> (next_lexer, Token.Minus)
+  | Some '!' ->
+    (match next_lexer.ch with
+     | Some peekCh ->
+       if peekCh = '=' then
+         (read next_lexer, Token.NotEq)
+       else
+         (next_lexer, Token.Bang)
+     | None -> (next_lexer, Token.Assign))
+  | Some '/' -> (next_lexer, Token.Slash)
+  | Some '*' -> (next_lexer, Token.Asterisk)
+  | Some '<' -> (next_lexer, Token.Lt)
+  | Some '>' -> (next_lexer, Token.Gt)
   | Some ',' -> (next_lexer, Token.Comma)
   | Some ';' -> (next_lexer, Token.Semicolon)
   | Some '(' -> (next_lexer, Token.LParen)
