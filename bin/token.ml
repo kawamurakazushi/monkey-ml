@@ -21,7 +21,7 @@ let to_string t = match t with
   | Int int -> Printf.sprintf "INT(%d)" int
   | Assign -> "ASSIGN"
   | Plus -> "PLUS"
-  | Comma -> "ASCOMMA"
+  | Comma -> "COMMA"
   | Semicolon -> "SEMICOLON"
   | LParen -> "LPAREN"
   | RParen -> "RPAREN"
@@ -29,3 +29,8 @@ let to_string t = match t with
   | RBrace -> "RBRACE"
   | Function -> "FUNCTION"
   | Let -> "LET"
+
+let identfier_to_type a = match a with
+  | "let" -> Let
+  | "fn" -> Function
+  | str -> Ident str
