@@ -1,1 +1,1 @@
-let () =  Lexertest.run_test ()
+let () =  Lexertest.run_test (); Repl.start;

@@ -139,4 +139,4 @@ let test_is_letter =
   else print_endline "pass"
 
 
-let run_test () = print_endline"fuck";
+let run_test () = ()
