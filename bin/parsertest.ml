@@ -17,7 +17,7 @@ let test_let_statement expectedName (s: Ast.statement) =
           else "?? PASS"
         |_ -> ""
       )
-  | ReturnStatement _ -> "??token is not `let`. got return statement"
+  | ReturnStatement  -> "??token is not `let`. got return statement"
 
 let test_let_statements =
   let input  = "

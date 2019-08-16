@@ -27,29 +27,30 @@ let expect_peek parser token =
 let parse_let_statement parser =
   match parser.peek_token with
   | Ident _ ->
-    let next_parser = next_token parser in
+    (* let next_parser = next_token parser in *)
     Some (Ast.LetStatement {token = Token.Let;
                             name = {token= Token.Let; value="let"};
                             value = {node = {token= Token.Let;}; token = Token.Let}})
   | _ -> None
 
-(* returns list of statements *)
+(* rtoooeturns list of statements *)
 let rec parse_statement parser (statements: Ast.statement list ) =
   let _ = parser.cur_token |> Token.to_string |> print_endline in
   match parser.cur_token with
   | Token.Eof -> statements
   | Token.Let ->
     let next_parser = next_token parser in
-    let let_statement = parse_let_statement next_parser in
-    parse_statement next_parser statements @ (parse_let_statement parser
-                                              |> Option.map (fun a -> [a])
-                                              |> Option.value ~default:[])
+    (* let let_statement = parse_let_statement next_parser in *)
+    parse_statement next_parser statements
+    @ (parse_let_statement parser
+       |> Option.map (fun a -> [a])
+       |> Option.value ~default:[])
   | _ ->
     let next_parser = next_token parser in
     parse_statement next_parser statements
 
 
 let parse parser =
-  let program =  { Ast.statements = [] } in
+  (* let program =  { Ast.statements = [] } in *)
   let statements = parse_statement parser [] in
-  {program with statements = statements}
+  {Ast.statements = statements}

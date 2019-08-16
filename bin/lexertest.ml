@@ -128,15 +128,5 @@ let test_advance =
   |> snd
   |> print_endline
 
-let test_is_letter =
-  if Lexer.is_letter 'a' then
-    print_endline "pass"
-  else print_endline "faild"
-
-let test_is_letter =
-  if Lexer.is_letter '1' then
-    print_endline "faild"
-  else print_endline "pass"
-
 
 let run_test () = ()
