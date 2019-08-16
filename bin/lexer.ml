@@ -1,4 +1,4 @@
-type t = {
+type lexer = {
   input: string;
   position: int;
   readPosition: int;
