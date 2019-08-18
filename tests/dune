@@ -1,2 +1,8 @@
 (test
- (name test))
+ (name test)
+ (libraries lib alcotest))
+
+(alias
+ (name runtest)
+ (deps test.exe)
+ (action (run %{deps} -q --color=always)))

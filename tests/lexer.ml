@@ -1,7 +1,21 @@
+open Lib
 
-let check expected got =
-  if expected = got then Printf.sprintf "🎉 PASS - got %s" expected
-  else Printf.sprintf "🔥 FAILED - expected %s, got %s" expected got
+let check name lexer a =
+  a |> List.fold_left
+    (fun (lexer, tests) expected_token ->
+       let (new_lexer, token) = Lexer.next lexer in
+       let expected = expected_token |> Token.to_string in
+       let got = token |> Token.to_string in
+       let test ()  = Alcotest.(check string) "same token" expected got in
+       (new_lexer,
+        tests @
+        [(Alcotest.test_case
+            (Printf.sprintf "%s expected=%s, got=%s" name expected got) `Quick test
+         )]
+       )
+    )
+    (lexer , [])
+  |> snd
 
 let test_basic =
   let input  = "=+(){},;" in
@@ -15,15 +29,9 @@ let test_basic =
    Token.Comma;
    Token.Semicolon;
    Token.Eof]
-  |> List.fold_left
-    (fun (lexer, message) expectedToken ->
-       let (newLexer, token) = Lexer.next lexer
-       in (newLexer, message ^ check (Token.to_string expectedToken ) (Token.to_string token) ^ "\n"))
-    (lexer , "Testing test_basic...\n")
-  |> snd
-  |> print_endline
+  |> check "Basic" lexer
 
-let test_advance =
+let test_advance  =
   let input  = "let five = 5;
   let ten = 10;
 
@@ -120,13 +128,6 @@ let test_advance =
    Token.Semicolon;
    Token.Eof;
   ]
-  |> List.fold_left
-    (fun (lexer, message) expectedToken ->
-       let (newLexer, token) = Lexer.next lexer
-       in (newLexer, message ^ check (Token.to_string expectedToken ) (Token.to_string token) ^ "\n"))
-    (lexer , "Testing test_advacne...\n")
-  |> snd
-  |> print_endline
+  |> check "Advance" lexer
 
-
-let run_test () = ()
+let tests =  test_basic @ test_advance

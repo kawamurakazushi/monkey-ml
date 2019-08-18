@@ -4,5 +4,5 @@ lib: [
   "_build/install/default/lib/monkey-ml/opam"
 ]
 bin: [
-  "_build/install/default/bin/MonkeyMl"
+  "_build/install/default/bin/main"
 ]

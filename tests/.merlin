@@ -1,4 +1,26 @@
 EXCLUDE_QUERY_DIR
+B /Users/kazushi/.opam/4.08.1/lib/alcotest
+B /Users/kazushi/.opam/4.08.1/lib/astring
+B /Users/kazushi/.opam/4.08.1/lib/bytes
+B /Users/kazushi/.opam/4.08.1/lib/cmdliner
+B /Users/kazushi/.opam/4.08.1/lib/fmt
+B /Users/kazushi/.opam/4.08.1/lib/ocaml
+B /Users/kazushi/.opam/4.08.1/lib/result
+B /Users/kazushi/.opam/4.08.1/lib/seq
+B /Users/kazushi/.opam/4.08.1/lib/stdlib-shims
+B /Users/kazushi/.opam/4.08.1/lib/uuidm
+B ../_build/default/lib/.lib.objs/byte
 B ../_build/default/tests/.test.eobjs/byte
+S /Users/kazushi/.opam/4.08.1/lib/alcotest
+S /Users/kazushi/.opam/4.08.1/lib/astring
+S /Users/kazushi/.opam/4.08.1/lib/bytes
+S /Users/kazushi/.opam/4.08.1/lib/cmdliner
+S /Users/kazushi/.opam/4.08.1/lib/fmt
+S /Users/kazushi/.opam/4.08.1/lib/ocaml
+S /Users/kazushi/.opam/4.08.1/lib/result
+S /Users/kazushi/.opam/4.08.1/lib/seq
+S /Users/kazushi/.opam/4.08.1/lib/stdlib-shims
+S /Users/kazushi/.opam/4.08.1/lib/uuidm
+S ../lib
 S .
 FLG -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs

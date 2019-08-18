@@ -1,6 +1,6 @@
 (executable
  (name main) ; The name of your entry file, minus the .ml
- (public_name MonkeyMl) ; Whatever you like, as far as I can tell
+ (public_name main) ; Whatever you like, as far as I can tell
  (libraries lib))
 
 ; Express a dependency on the "lib" module
